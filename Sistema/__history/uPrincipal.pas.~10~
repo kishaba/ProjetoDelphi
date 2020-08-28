@@ -1,0 +1,39 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+
+type
+  TfrmPrincipal = class(TForm)
+    pnpTitulo: TPanel;
+    pnpPrincipal: TPanel;
+    Panel2: TPanel;
+    pnpSair: TPanel;
+    Image2: TImage;
+    pnpPedidoVenda: TPanel;
+    Image1: TImage;
+    pnpPedidoCompra: TPanel;
+    Image3: TImage;
+    pnpCada: TPanel;
+    Image4: TImage;
+    procedure pnpCadaEnter(Sender: TObject);
+    procedure pnpCadaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmPrincipal: TfrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+
+end.

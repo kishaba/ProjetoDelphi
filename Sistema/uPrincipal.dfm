@@ -30,9 +30,6 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitLeft = 296
-    ExplicitTop = 24
-    ExplicitWidth = 185
   end
   object pnpPrincipal: TPanel
     Left = 0
@@ -61,10 +58,8 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
-      ExplicitTop = 8
-      ExplicitWidth = 161
     end
-    object pnpCad: TPanel
+    object pnpSair: TPanel
       Left = 0
       Top = 241
       Width = 209
@@ -81,8 +76,8 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
-      ExplicitTop = 119
-      ExplicitWidth = 193
+      OnMouseEnter = pnpCadaMouseEnter
+      OnMouseLeave = pnpCadaMouseLeave
       object Image2: TImage
         Left = 0
         Top = 0
@@ -158,7 +153,7 @@ object frmPrincipal: TfrmPrincipal
         ExplicitHeight = 49
       end
     end
-    object Panel1: TPanel
+    object pnpPedidoVenda: TPanel
       Left = 0
       Top = 177
       Width = 209
@@ -175,8 +170,8 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
-      ExplicitTop = 119
-      ExplicitWidth = 193
+      OnMouseEnter = pnpCadaMouseEnter
+      OnMouseLeave = pnpCadaMouseLeave
       object Image1: TImage
         Left = 0
         Top = 0
@@ -294,7 +289,7 @@ object frmPrincipal: TfrmPrincipal
         ExplicitHeight = 49
       end
     end
-    object Panel3: TPanel
+    object pnpPedidoCompra: TPanel
       Left = 0
       Top = 113
       Width = 209
@@ -311,8 +306,8 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 3
-      ExplicitTop = 119
-      ExplicitWidth = 193
+      OnMouseEnter = pnpCadaMouseEnter
+      OnMouseLeave = pnpCadaMouseLeave
       object Image3: TImage
         Left = 0
         Top = 0
@@ -428,7 +423,7 @@ object frmPrincipal: TfrmPrincipal
         ExplicitHeight = 49
       end
     end
-    object Panel4: TPanel
+    object pnpCada: TPanel
       Left = 0
       Top = 49
       Width = 209
@@ -445,8 +440,8 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 4
-      ExplicitTop = 119
-      ExplicitWidth = 193
+      OnMouseEnter = pnpCadaMouseEnter
+      OnMouseLeave = pnpCadaMouseLeave
       object Image4: TImage
         Left = 0
         Top = 0
