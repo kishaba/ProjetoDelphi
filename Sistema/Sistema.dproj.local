@@ -3,8 +3,8 @@
 	<Transactions>
     <Transaction>2020/08/28 15:31:42.000.543,=C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2020/08/28 15:31:53.000.304,=C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/08/28 15:35:16.000.450,H:\ProjetoDelphi\Sistema\uPrincipal.pas=C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2020/08/28 15:35:16.000.450,H:\ProjetoDelphi\Sistema\uPrincipal.dfm=C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2020/08/28 15:36:01.000.007,H:\ProjetoDelphi\Sistema\Sistema.dproj=C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2020/08/28 15:35:16.000.450,C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.dfm=H:\ProjetoDelphi\Sistema\uPrincipal.dfm</Transaction>
+    <Transaction>2020/08/28 15:35:16.000.450,C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Unit1.pas=H:\ProjetoDelphi\Sistema\uPrincipal.pas</Transaction>
+    <Transaction>2020/08/28 15:36:01.000.007,C:\Users\Soma\Documents\Embarcadero\Studio\Projects\Project1.dproj=H:\ProjetoDelphi\Sistema\Sistema.dproj</Transaction>
   </Transactions>
 </BorlandProject>
