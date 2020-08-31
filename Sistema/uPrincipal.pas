@@ -35,6 +35,7 @@ type
     procedure pnpSairClick(Sender: TObject);
     procedure pnpVoltarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure pnpCadProdutosClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -49,6 +50,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses uCadProduto;
 
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -73,6 +76,11 @@ begin
   if not(Sender is TPanel) then
     exit;
   (Sender as TPanel).Color :=clSkyBlue;
+end;
+
+procedure TfrmPrincipal.pnpCadProdutosClick(Sender: TObject);
+begin
+  frmCadProduto.ShowModal;
 end;
 
 procedure TfrmPrincipal.pnpSairClick(Sender: TObject);

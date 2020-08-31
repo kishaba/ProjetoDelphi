@@ -42,8 +42,6 @@ object frmPrincipal: TfrmPrincipal
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 41
-    ExplicitHeight = 609
     object Panel2: TPanel
       Left = 0
       Top = 0
@@ -525,9 +523,6 @@ object frmPrincipal: TfrmPrincipal
     ParentBackground = False
     TabOrder = 2
     Visible = False
-    ExplicitLeft = 8
-    ExplicitTop = 41
-    ExplicitHeight = 609
     object Panel3: TPanel
       Left = 0
       Top = 0
@@ -566,7 +561,6 @@ object frmPrincipal: TfrmPrincipal
       OnClick = pnpVoltarClick
       OnMouseEnter = pnpCadaMouseEnter
       OnMouseLeave = pnpCadaMouseLeave
-      ExplicitTop = 241
       object Image5: TImage
         Left = 0
         Top = 0
@@ -811,8 +805,11 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 3
+      OnClick = pnpCadProdutosClick
       OnMouseEnter = pnpCadaMouseEnter
       OnMouseLeave = pnpCadaMouseLeave
+      ExplicitLeft = 6
+      ExplicitTop = 43
       object Image8: TImage
         Left = 0
         Top = 0

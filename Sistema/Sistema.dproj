@@ -94,6 +94,19 @@
             <Form>frmPrincipal</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="units\uFormPadrao.pas">
+            <Form>frmPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="units\uCadProduto.pas">
+            <Form>frmCadProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="units\uTabGlobal.pas">
+            <Form>dtmGlobal</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
