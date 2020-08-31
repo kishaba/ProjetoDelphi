@@ -58,9 +58,12 @@ begin
 end;
 
 procedure TfrmPadrao.btnExcluiClick(Sender: TObject);
-begin
-
-  dsPadrao.DataSet.Delete;
+  begin
+  if MessageDlg('Deseja mesmo Excluir(Inativar) o produto?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes then
+  begin
+     dsPadrao.DataSet.Delete
+  end;
   ControlaBotoes;
   HabilitaEdicao(false);
 end;

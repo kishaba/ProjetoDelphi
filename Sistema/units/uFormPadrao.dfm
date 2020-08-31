@@ -30,7 +30,6 @@ object frmPadrao: TfrmPadrao
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 686
   end
   object Panel2: TPanel
     Left = 0
@@ -42,7 +41,6 @@ object frmPadrao: TfrmPadrao
     Color = clSkyBlue
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 419
     object btnInclui: TImage
       Left = 8
       Top = 6
