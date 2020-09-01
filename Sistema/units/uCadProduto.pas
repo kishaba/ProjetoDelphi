@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormPadrao, Data.DB,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls;
+  Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, System.Actions, Vcl.ActnList;
 
 type
   TfrmCadProduto = class(TfrmPadrao)
@@ -20,12 +20,13 @@ type
     edtDescricao: TDBEdit;
     procedure edtLocalizarKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure btnIncluiClick(Sender: TObject);
-    procedure btnSalvaClick(Sender: TObject);
-    procedure BtnCancelaClick(Sender: TObject);
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure edtDescricaoKeyPress(Sender: TObject; var Key: Char);
+    procedure actIncluirExecute(Sender: TObject);
+    procedure actCancelarExecute(Sender: TObject);
+    procedure actSalvarExecute(Sender: TObject);
+    procedure actEditaExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -41,24 +42,32 @@ implementation
 
 uses uTabGlobal;
 
-procedure TfrmCadProduto.BtnCancelaClick(Sender: TObject);
+procedure TfrmCadProduto.actCancelarExecute(Sender: TObject);
 begin
   inherited;
   grdConsulta.Enabled := true;
 end;
 
-procedure TfrmCadProduto.btnIncluiClick(Sender: TObject);
+procedure TfrmCadProduto.actEditaExecute(Sender: TObject);
+begin
+  inherited;
+  edtDescricao.SetFocus;
+end;
+
+procedure TfrmCadProduto.actIncluirExecute(Sender: TObject);
 begin
   inherited;
   grdConsulta.Enabled := False;
   edtDescricao.SetFocus;
 end;
 
-procedure TfrmCadProduto.btnSalvaClick(Sender: TObject);
+
+procedure TfrmCadProduto.actSalvarExecute(Sender: TObject);
 begin
   inherited;
   grdConsulta.Enabled := true;
 end;
+
 
 
 procedure TfrmCadProduto.edtDescricaoKeyPress(Sender: TObject; var Key: Char);
@@ -66,7 +75,7 @@ begin
   inherited;
   if key = #13 then
   begin
-   btnSalvaClick(Sender);
+   actSalvar.Execute;
   end;
 
 end;

@@ -11,10 +11,6 @@ inherited frmCadProduto: TfrmCadProduto
   end
   inherited Panel1: TPanel
     Caption = 'Cadastro de Produtos'
-    ExplicitWidth = 796
-  end
-  inherited Panel2: TPanel
-    ExplicitHeight = 556
   end
   object grdConsulta: TDBGrid [3]
     Left = 92
@@ -88,5 +84,9 @@ inherited frmCadProduto: TfrmCadProduto
     DataSet = dtmGlobal.qrProduto
     Left = 456
     Top = 64
+  end
+  inherited ActionList1: TActionList
+    Left = 504
+    Top = 160
   end
 end

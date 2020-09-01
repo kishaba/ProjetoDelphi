@@ -41,11 +41,13 @@ object frmPadrao: TfrmPadrao
     Color = clSkyBlue
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 47
     object btnInclui: TImage
       Left = 8
       Top = 6
       Width = 60
       Height = 60
+      Cursor = crHandPoint
       Hint = 'Inserir'
       Align = alCustom
       ParentShowHint = False
@@ -107,13 +109,14 @@ object frmPadrao: TfrmPadrao
         000049454E44AE426082}
       ShowHint = True
       Stretch = True
-      OnClick = btnIncluiClick
+      OnClick = actIncluirExecute
     end
     object btnEdita: TImage
       Left = 8
       Top = 72
       Width = 60
       Height = 60
+      Cursor = crHandPoint
       Hint = 'Editar'
       Align = alCustom
       ParentShowHint = False
@@ -198,13 +201,14 @@ object frmPadrao: TfrmPadrao
         46C039808F3C01FF073805AA69F6BEDCB10000000049454E44AE426082}
       ShowHint = True
       Stretch = True
-      OnClick = btnEditaClick
+      OnClick = actEditaExecute
     end
     object btnExclui: TImage
       Left = 8
       Top = 138
       Width = 60
       Height = 60
+      Cursor = crHandPoint
       Hint = 'Excluir'
       Align = alCustom
       ParentShowHint = False
@@ -312,13 +316,14 @@ object frmPadrao: TfrmPadrao
         6082}
       ShowHint = True
       Stretch = True
-      OnClick = btnExcluiClick
+      OnClick = actExcluirExecute
     end
     object btnSalva: TImage
       Left = 8
       Top = 420
       Width = 60
       Height = 60
+      Cursor = crHandPoint
       Hint = 'Salvar'
       Align = alCustom
       ParentShowHint = False
@@ -398,13 +403,14 @@ object frmPadrao: TfrmPadrao
         0000000049454E44AE426082}
       ShowHint = True
       Stretch = True
-      OnClick = btnSalvaClick
+      OnClick = actSalvarExecute
     end
-    object BtnCancela: TImage
+    object btnCancela: TImage
       Left = 8
       Top = 486
       Width = 60
       Height = 60
+      Cursor = crHandPoint
       Hint = 'Cancelar'
       Align = alCustom
       ParentShowHint = False
@@ -475,11 +481,100 @@ object frmPadrao: TfrmPadrao
         FF078BFA0AD09C8D64500000000049454E44AE426082}
       ShowHint = True
       Stretch = True
-      OnClick = BtnCancelaClick
+      OnClick = actCancelarExecute
+    end
+    object lblF2: TLabel
+      Left = 8
+      Top = 47
+      Width = 19
+      Height = 19
+      Caption = 'F2'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblF3: TLabel
+      Left = 8
+      Top = 113
+      Width = 19
+      Height = 19
+      Caption = 'F3'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblF4: TLabel
+      Left = 8
+      Top = 179
+      Width = 19
+      Height = 19
+      Caption = 'F4'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblF5: TLabel
+      Left = 8
+      Top = 461
+      Width = 19
+      Height = 19
+      Caption = 'F5'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblF6: TLabel
+      Left = 8
+      Top = 523
+      Width = 19
+      Height = 19
+      Caption = 'F6'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object dsPadrao: TDataSource
     Left = 160
     Top = 368
+  end
+  object ActionList1: TActionList
+    Left = 400
+    Top = 208
+    object actIncluir: TAction
+      ShortCut = 113
+      OnExecute = actIncluirExecute
+    end
+    object actEdita: TAction
+      ShortCut = 114
+      OnExecute = actEditaExecute
+    end
+    object actExcluir: TAction
+      ShortCut = 115
+      OnExecute = actExcluirExecute
+    end
+    object actSalvar: TAction
+      ShortCut = 116
+      OnExecute = actSalvarExecute
+    end
+    object actCancelar: TAction
+      ShortCut = 117
+      OnExecute = actCancelarExecute
+    end
   end
 end

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Data.DB, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls;
+  Data.DB, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, System.Actions, Vcl.ActnList;
 
 type
   TfrmPadrao = class(TForm)
@@ -15,15 +15,25 @@ type
     btnEdita: TImage;
     btnExclui: TImage;
     btnSalva: TImage;
-    BtnCancela: TImage;
+    btnCancela: TImage;
     dsPadrao: TDataSource;
-    procedure btnIncluiClick(Sender: TObject);
-    procedure btnEditaClick(Sender: TObject);
-    procedure btnExcluiClick(Sender: TObject);
-    procedure btnProcuraClick(Sender: TObject);
-    procedure btnSalvaClick(Sender: TObject);
-    procedure BtnCancelaClick(Sender: TObject);
+    lblF2: TLabel;
+    lblF3: TLabel;
+    lblF4: TLabel;
+    lblF5: TLabel;
+    lblF6: TLabel;
+    ActionList1: TActionList;
+    actIncluir: TAction;
+    actEdita: TAction;
+    actExcluir: TAction;
+    actSalvar: TAction;
+    actCancelar: TAction;
     procedure FormShow(Sender: TObject);
+    procedure actIncluirExecute(Sender: TObject);
+    procedure actEditaExecute(Sender: TObject);
+    procedure actExcluirExecute(Sender: TObject);
+    procedure actSalvarExecute(Sender: TObject);
+    procedure actCancelarExecute(Sender: TObject);
   private
     { Private declarations }
     procedure ControlaBotoes;
@@ -43,22 +53,22 @@ uses uTabGlobal;
 
 { TfrmPadrao }
 
-procedure TfrmPadrao.BtnCancelaClick(Sender: TObject);
+procedure TfrmPadrao.actCancelarExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.Cancel;
   ControlaBotoes;
   HabilitaEdicao(false);
 end;
 
-procedure TfrmPadrao.btnEditaClick(Sender: TObject);
+procedure TfrmPadrao.actEditaExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.Edit;
   ControlaBotoes;
   HabilitaEdicao(true);
 end;
 
-procedure TfrmPadrao.btnExcluiClick(Sender: TObject);
-  begin
+procedure TfrmPadrao.actExcluirExecute(Sender: TObject);
+begin
   if MessageDlg('Deseja mesmo Excluir(Inativar) o produto?', mtConfirmation,
     [mbYes, mbNo], 0) = mrYes then
   begin
@@ -68,33 +78,33 @@ procedure TfrmPadrao.btnExcluiClick(Sender: TObject);
   HabilitaEdicao(false);
 end;
 
-procedure TfrmPadrao.btnIncluiClick(Sender: TObject);
+procedure TfrmPadrao.actIncluirExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.Insert;
   ControlaBotoes;
   HabilitaEdicao(true);
 end;
 
-procedure TfrmPadrao.btnProcuraClick(Sender: TObject);
-begin
-  ControlaBotoes;
-  HabilitaEdicao(false);
-end;
-
-procedure TfrmPadrao.btnSalvaClick(Sender: TObject);
+procedure TfrmPadrao.actSalvarExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.post;
   ControlaBotoes;
   HabilitaEdicao(false);
 end;
 
+
 procedure TfrmPadrao.ControlaBotoes;
 begin
   btnInclui.Visible  := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+  lblF2.Visible  := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   btnEdita.Visible   := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+  lblF3.Visible   := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   btnExclui.Visible  := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+  lblF4.Visible  := not(dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   btnSalva.Visible   := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+  lblF5.Visible   := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   BtnCancela.Visible := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+  lblF6.Visible := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
 end;
 
 procedure TfrmPadrao.FormShow(Sender: TObject);

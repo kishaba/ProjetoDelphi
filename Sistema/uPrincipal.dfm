@@ -65,6 +65,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 241
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '      Sair'
@@ -160,6 +161,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 177
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '            Pedido Venda'
@@ -296,6 +298,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 113
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '              Pedido Compra'
@@ -430,6 +433,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 49
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '        Cadastros'
@@ -546,6 +550,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 177
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '     Voltar'
@@ -645,6 +650,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 113
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '         Clientes'
@@ -793,6 +799,7 @@ object frmPrincipal: TfrmPrincipal
       Top = 49
       Width = 209
       Height = 64
+      Cursor = crHandPoint
       Align = alTop
       BevelOuter = bvNone
       Caption = '        Produtos'
@@ -808,8 +815,6 @@ object frmPrincipal: TfrmPrincipal
       OnClick = pnpCadProdutosClick
       OnMouseEnter = pnpCadaMouseEnter
       OnMouseLeave = pnpCadaMouseLeave
-      ExplicitLeft = 6
-      ExplicitTop = 43
       object Image8: TImage
         Left = 0
         Top = 0
