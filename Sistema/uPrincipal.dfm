@@ -174,6 +174,7 @@ object frmPrincipal: TfrmPrincipal
       ParentBackground = False
       ParentFont = False
       TabOrder = 2
+      OnClick = pnpPedidoVendaClick
       OnMouseEnter = pnpCadaMouseEnter
       OnMouseLeave = pnpCadaMouseLeave
       object Image1: TImage

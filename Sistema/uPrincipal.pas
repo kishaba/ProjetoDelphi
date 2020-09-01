@@ -36,6 +36,7 @@ type
     procedure pnpVoltarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure pnpCadProdutosClick(Sender: TObject);
+    procedure pnpPedidoVendaClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -51,7 +52,7 @@ implementation
 
 {$R *.dfm}
 
-uses uCadProduto;
+uses uCadProduto, uLanPedidoVenda;
 
 
 procedure TfrmPrincipal.FormShow(Sender: TObject);
@@ -81,6 +82,11 @@ end;
 procedure TfrmPrincipal.pnpCadProdutosClick(Sender: TObject);
 begin
   frmCadProduto.ShowModal;
+end;
+
+procedure TfrmPrincipal.pnpPedidoVendaClick(Sender: TObject);
+begin
+  frmLanPedido.ShowModal;
 end;
 
 procedure TfrmPrincipal.pnpSairClick(Sender: TObject);

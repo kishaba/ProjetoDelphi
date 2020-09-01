@@ -15,6 +15,27 @@ type
     qrProdutoCODPRODUTO: TIntegerField;
     qrProdutoDESCRICAO: TIBStringField;
     qrProdutoSITUACAO: TIBStringField;
+    qryPedido: TIBQuery;
+    transPedido: TIBTransaction;
+    upPedido: TIBUpdateSQL;
+    qryPedidoCODPEDIDO: TIntegerField;
+    qryPedidoREFERENCIA: TIBStringField;
+    qryPedidoNUMEROPEDIDO: TIntegerField;
+    qryPedidoDATAEMISSAO: TDateField;
+    qryPedidoCODIGOCLIENTE: TIntegerField;
+    qryPedidoTIPOPERACAO: TIBStringField;
+    qryPedidoTOTALPEDIDO: TIBBCDField;
+    qryItemPedido: TIBQuery;
+    transItemPedido: TIBTransaction;
+    upItemPedido: TIBUpdateSQL;
+    qryItemPedidoCODPEDIDO: TIntegerField;
+    qryItemPedidoNUMEROPEDIDO: TIntegerField;
+    qryItemPedidoITEMPEDIDO: TIntegerField;
+    qryItemPedidoCODPRODUTO: TIntegerField;
+    qryItemPedidoQUANTIDADE: TIBBCDField;
+    qryItemPedidoUNIDADE: TIBStringField;
+    qryItemPedidoVALORUNITARIO: TIBBCDField;
+    qryItemPedidoVALORTOTALITEM: TIBBCDField;
   private
     { Private declarations }
   public
