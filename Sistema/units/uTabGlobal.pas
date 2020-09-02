@@ -9,12 +9,8 @@ uses
 type
   TdtmGlobal = class(TDataModule)
     Conexao: TIBDatabase;
-    qrProduto: TIBQuery;
     upProduto: TIBUpdateSQL;
     transProduto: TIBTransaction;
-    qrProdutoCODPRODUTO: TIntegerField;
-    qrProdutoDESCRICAO: TIBStringField;
-    qrProdutoSITUACAO: TIBStringField;
     qryPedido: TIBQuery;
     transPedido: TIBTransaction;
     upPedido: TIBUpdateSQL;
@@ -36,6 +32,20 @@ type
     qryItemPedidoUNIDADE: TIBStringField;
     qryItemPedidoVALORUNITARIO: TIBBCDField;
     qryItemPedidoVALORTOTALITEM: TIBBCDField;
+    qryConsultaPedido: TIBQuery;
+    transConsultaPedido: TIBTransaction;
+    qryConsultaPedidoCODPEDIDO: TIntegerField;
+    qryConsultaPedidoREFERENCIA: TIBStringField;
+    qryConsultaPedidoNUMEROPEDIDO: TIntegerField;
+    qryConsultaPedidoDATAEMISSAO: TDateField;
+    qryConsultaPedidoCODIGOCLIENTE: TIntegerField;
+    qryConsultaPedidoTIPOPERACAO: TIBStringField;
+    qryConsultaPedidoTOTALPEDIDO: TIBBCDField;
+    qryProduto: TIBQuery;
+    qryProdutoCODPRODUTO: TIntegerField;
+    qryProdutoDESCRICAO: TIBStringField;
+    qryProdutoSITUACAO: TIBStringField;
+    procedure qryProdutoAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -50,5 +60,11 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdtmGlobal.qryProdutoAfterPost(DataSet: TDataSet);
+begin
+  qryProduto.ApplyUpdates;
+  transProduto.commit;
+end;
 
 end.

@@ -13,71 +13,26 @@ object dtmGlobal: TdtmGlobal
     Left = 32
     Top = 8
   end
-  object qrProduto: TIBQuery
-    Database = Conexao
-    Transaction = transProduto
-    Active = True
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from PRODUTO'
-      'order by DESCRICAO')
-    UpdateObject = upProduto
-    GeneratorField.Field = 'CODPRODUTO'
-    GeneratorField.Generator = 'GEN_CODPRODUTO'
-    GeneratorField.ApplyEvent = gamOnPost
-    Left = 32
-    Top = 64
-    object qrProdutoCODPRODUTO: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'CODPRODUTO'
-      Origin = 'PRODUTO.CODPRODUTO'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object qrProdutoDESCRICAO: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o'
-      DisplayWidth = 50
-      FieldName = 'DESCRICAO'
-      Origin = 'PRODUTO.DESCRICAO'
-      Required = True
-      Size = 100
-    end
-    object qrProdutoSITUACAO: TIBStringField
-      DisplayLabel = 'Situa'#231#227'o'
-      FieldName = 'SITUACAO'
-      Origin = 'PRODUTO.SITUACAO'
-      FixedChar = True
-      Size = 1
-    end
-  end
   object upProduto: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
-      '  CODPRODUTO,'
-      '  DESCRICAO,'
-      '  SITUACAO'
-      'from PRODUTO '
+      'Select *'
+      'from produto '
       'where'
       '  CODPRODUTO = :CODPRODUTO')
     ModifySQL.Strings = (
-      'update PRODUTO'
+      'update produto'
       'set'
-      '  CODPRODUTO = :CODPRODUTO,'
       '  DESCRICAO = :DESCRICAO,'
       '  SITUACAO = :SITUACAO'
       'where'
       '  CODPRODUTO = :OLD_CODPRODUTO')
     InsertSQL.Strings = (
-      'insert into PRODUTO'
-      '  (CODPRODUTO, DESCRICAO)'
+      'insert into produto'
+      '  (CODPRODUTO, DESCRICAO, SITUACAO)'
       'values'
-      '  (:CODPRODUTO, :DESCRICAO)')
+      '  (:CODPRODUTO, :DESCRICAO, :SITUACAO)')
     DeleteSQL.Strings = (
-      'update PRODUTO'
-      'set'
-      '  SITUACAO = '#39'I'#39
+      'delete from produto'
       'where'
       '  CODPRODUTO = :OLD_CODPRODUTO')
     Left = 32
@@ -92,7 +47,6 @@ object dtmGlobal: TdtmGlobal
   object qryPedido: TIBQuery
     Database = Conexao
     Transaction = transPedido
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -151,7 +105,6 @@ object dtmGlobal: TdtmGlobal
     end
   end
   object transPedido: TIBTransaction
-    Active = True
     DefaultDatabase = Conexao
     Left = 96
     Top = 176
@@ -208,7 +161,6 @@ object dtmGlobal: TdtmGlobal
     ParamCheck = True
     SQL.Strings = (
       'select * from ITEMPEDIDO')
-    UpdateObject = upItemPedido
     GeneratorField.Field = 'ITEMPEDIDO'
     GeneratorField.Generator = 'GEN_CODPEDIDO'
     GeneratorField.ApplyEvent = gamOnPost
@@ -266,7 +218,6 @@ object dtmGlobal: TdtmGlobal
     end
   end
   object transItemPedido: TIBTransaction
-    Active = True
     DefaultDatabase = Conexao
     Left = 248
     Top = 176
@@ -316,5 +267,103 @@ object dtmGlobal: TdtmGlobal
       '  ITEMPEDIDO = :OLD_ITEMPEDIDO')
     Left = 168
     Top = 232
+  end
+  object qryConsultaPedido: TIBQuery
+    Database = Conexao
+    Transaction = transConsultaPedido
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from PEDIDO where pedido.codpedido = :codpedido')
+    GeneratorField.Field = 'CODPEDIDO'
+    GeneratorField.Generator = 'GEN_CODPEDIDO'
+    GeneratorField.ApplyEvent = gamOnPost
+    Left = 112
+    Top = 312
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'codpedido'
+        ParamType = ptUnknown
+      end>
+    object qryConsultaPedidoCODPEDIDO: TIntegerField
+      FieldName = 'CODPEDIDO'
+      Origin = 'PEDIDO.CODPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryConsultaPedidoREFERENCIA: TIBStringField
+      FieldName = 'REFERENCIA'
+      Origin = 'PEDIDO.REFERENCIA'
+      Required = True
+      Size = 10
+    end
+    object qryConsultaPedidoNUMEROPEDIDO: TIntegerField
+      FieldName = 'NUMEROPEDIDO'
+      Origin = 'PEDIDO.NUMEROPEDIDO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryConsultaPedidoDATAEMISSAO: TDateField
+      FieldName = 'DATAEMISSAO'
+      Origin = 'PEDIDO.DATAEMISSAO'
+    end
+    object qryConsultaPedidoCODIGOCLIENTE: TIntegerField
+      FieldName = 'CODIGOCLIENTE'
+      Origin = 'PEDIDO.CODIGOCLIENTE'
+    end
+    object qryConsultaPedidoTIPOPERACAO: TIBStringField
+      FieldName = 'TIPOPERACAO'
+      Origin = 'PEDIDO.TIPOPERACAO'
+      FixedChar = True
+      Size = 1
+    end
+    object qryConsultaPedidoTOTALPEDIDO: TIBBCDField
+      FieldName = 'TOTALPEDIDO'
+      Origin = 'PEDIDO.TOTALPEDIDO'
+      Precision = 18
+      Size = 4
+    end
+  end
+  object transConsultaPedido: TIBTransaction
+    DefaultDatabase = Conexao
+    Left = 184
+    Top = 312
+  end
+  object qryProduto: TIBQuery
+    Database = Conexao
+    Transaction = transProduto
+    ForcedRefresh = True
+    AfterPost = qryProdutoAfterPost
+    Active = True
+    BufferChunks = 1000
+    CachedUpdates = True
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from produto')
+    UpdateObject = upProduto
+    GeneratorField.Field = 'CODPRODUTO'
+    GeneratorField.Generator = 'GEN_CODPEDIDO'
+    Left = 32
+    Top = 64
+    object qryProdutoCODPRODUTO: TIntegerField
+      FieldName = 'CODPRODUTO'
+      Origin = 'PRODUTO.CODPRODUTO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object qryProdutoDESCRICAO: TIBStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'PRODUTO.DESCRICAO'
+      Required = True
+      Size = 100
+    end
+    object qryProdutoSITUACAO: TIBStringField
+      FieldName = 'SITUACAO'
+      Origin = 'PRODUTO.SITUACAO'
+      FixedChar = True
+      Size = 1
+    end
   end
 end

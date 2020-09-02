@@ -81,12 +81,12 @@ inherited frmCadProduto: TfrmCadProduto
     end
   end
   inherited dsPadrao: TDataSource
-    DataSet = dtmGlobal.qrProduto
-    Left = 456
-    Top = 64
+    DataSet = dtmGlobal.qryProduto
+    Left = 16
+    Top = 248
   end
   inherited ActionList1: TActionList
-    Left = 504
-    Top = 160
+    Left = 16
+    Top = 296
   end
 end

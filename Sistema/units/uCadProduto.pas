@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormPadrao, Data.DB,
   Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls,
-  Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, System.Actions, Vcl.ActnList;
+  Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, System.Actions, Vcl.ActnList,
+  IBX.IBDatabase, IBX.IBCustomDataSet, IBX.IBQuery;
 
 type
   TfrmCadProduto = class(TfrmPadrao)
@@ -56,8 +57,10 @@ end;
 
 procedure TfrmCadProduto.actIncluirExecute(Sender: TObject);
 begin
+  edtCodigo.Text := '';
+  edtDescricao.Text := '';
+  grdConsulta.Enabled := false;
   inherited;
-  grdConsulta.Enabled := False;
   edtDescricao.SetFocus;
 end;
 
@@ -66,6 +69,9 @@ procedure TfrmCadProduto.actSalvarExecute(Sender: TObject);
 begin
   inherited;
   grdConsulta.Enabled := true;
+  dtmGlobal.transProduto.commit;
+  dtmGlobal.transProduto.Active := false;
+  dtmGlobal.transProduto.Active := true;
 end;
 
 
@@ -83,6 +89,7 @@ end;
 procedure TfrmCadProduto.edtLocalizarKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  dsPadrao.DataSet.Open;
   if key = VK_RETURN then
   begin
     grdConsulta.SetFocus;

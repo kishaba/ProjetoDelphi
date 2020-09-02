@@ -3,7 +3,8 @@ unit uLanPedidoVenda;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uFormPadrao, System.Actions,
   Vcl.ActnList, Data.DB, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.WinXPickers;
@@ -12,19 +13,19 @@ type
   TfrmLanPedido = class(TfrmPadrao)
     grpPedido: TGroupBox;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
+    edtCodigo: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    edtReferencia: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
+    edtNumeroPedido: TDBEdit;
     Label4: TLabel;
     Label6: TLabel;
-    DBEdit6: TDBEdit;
+    edtTipoOperacao: TDBEdit;
     Label7: TLabel;
     DBEdit7: TDBEdit;
     GroupBox1: TGroupBox;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    edtCodigoCliente: TDBEdit;
     grdProdutos: TDBGrid;
     grpProduto: TGroupBox;
     Label8: TLabel;
@@ -43,9 +44,14 @@ type
     Panel3: TPanel;
     Image3: TImage;
     edtData: TDatePicker;
+    Image4: TImage;
+    btnPesquisar: TImage;
     procedure actSalvarExecute(Sender: TObject);
+    procedure actIncluirExecute(Sender: TObject);
+    procedure btnPesquisarClick(Sender: TObject);
   private
     { Private declarations }
+    procedure BuscaPedido(CodPedido: Integer);
   public
     { Public declarations }
   end;
@@ -57,13 +63,51 @@ implementation
 
 {$R *.dfm}
 
-uses uTabGlobal;
+uses uTabGlobal, uPesquisa;
+
+procedure TfrmLanPedido.actIncluirExecute(Sender: TObject);
+begin
+  dsPadrao.DataSet.Close;
+  dsPadrao.DataSet.Active := true;
+  dsPadrao.DataSet.Open;
+  inherited;
+end;
 
 procedure TfrmLanPedido.actSalvarExecute(Sender: TObject);
 begin
   dsPadrao.DataSet.FieldByName('DATAEMISSAO').AsDateTime := edtData.Date;
   inherited;
 
+end;
+
+procedure TfrmLanPedido.BuscaPedido(CodPedido: Integer);
+begin
+  dtmGlobal.qryConsultaPedido.Close;
+  dtmGlobal.qryConsultaPedido.ParamByName('codpedido').AsInteger := CodPedido;
+  dtmGlobal.qryConsultaPedido.Open;
+
+  edtReferencia.Text := dtmGlobal.qryConsultaPedidoREFERENCIA.AsString;
+  edtNumeroPedido.Text := dtmGlobal.qryConsultaPedidoNUMEROPEDIDO.AsString;
+  edtData.Date := dtmGlobal.qryConsultaPedidoDATAEMISSAO.AsDateTime;
+  edtTipoOperacao.Text := dtmGlobal.qryConsultaPedidoTIPOPERACAO.AsString;
+  edtCodigoCliente.Text := dtmGlobal.qryConsultaPedidoCODIGOCLIENTE.AsString;
+end;
+
+procedure TfrmLanPedido.btnPesquisarClick(Sender: TObject);
+begin
+  frmPesquisa := tfrmPesquisa.Create(self, ['referencia', 'codpedido',
+    'numeropedido'], 'pedido', 'codpedido');
+  try
+    if frmPesquisa.ShowModal = mrYes then
+    begin
+      edtCodigo.Text := frmPesquisa.edtRetorno.Text;
+      BuscaPedido(StrToInt(frmPesquisa.edtRetorno.Text));
+    end
+    else
+      edtCodigo.Clear;
+  finally
+    FreeAndNil(frmPesquisa);
+  end;
 end;
 
 end.

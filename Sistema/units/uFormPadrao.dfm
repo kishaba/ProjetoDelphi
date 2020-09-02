@@ -41,7 +41,6 @@ object frmPadrao: TfrmPadrao
     Color = clSkyBlue
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 47
     object btnInclui: TImage
       Left = 8
       Top = 6

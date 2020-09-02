@@ -60,6 +60,7 @@ begin
   selecionaMenu(1);
 end;
 
+
 procedure TfrmPrincipal.pnpCadaClick(Sender: TObject);
 begin
   selecionaMenu(2);
@@ -81,7 +82,12 @@ end;
 
 procedure TfrmPrincipal.pnpCadProdutosClick(Sender: TObject);
 begin
-  frmCadProduto.ShowModal;
+  try
+   frmCadProduto := TfrmCadProduto.Create(self);
+   frmCadProduto.ShowModal
+  finally
+    FreeAndNil(frmCadProduto);
+  end;
 end;
 
 procedure TfrmPrincipal.pnpPedidoVendaClick(Sender: TObject);

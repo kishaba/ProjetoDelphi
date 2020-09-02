@@ -55,6 +55,7 @@ uses uTabGlobal;
 
 procedure TfrmPadrao.actCancelarExecute(Sender: TObject);
 begin
+  dsPadrao.DataSet.Open;
   dsPadrao.DataSet.Cancel;
   ControlaBotoes;
   HabilitaEdicao(false);
@@ -62,6 +63,7 @@ end;
 
 procedure TfrmPadrao.actEditaExecute(Sender: TObject);
 begin
+  dsPadrao.DataSet.Open;
   dsPadrao.DataSet.Edit;
   ControlaBotoes;
   HabilitaEdicao(true);
@@ -80,7 +82,8 @@ end;
 
 procedure TfrmPadrao.actIncluirExecute(Sender: TObject);
 begin
-  dsPadrao.DataSet.Insert;
+  dsPadrao.DataSet.Open;
+  dsPadrao.DataSet.INSERT;
   ControlaBotoes;
   HabilitaEdicao(true);
 end;
@@ -111,6 +114,7 @@ procedure TfrmPadrao.FormShow(Sender: TObject);
 begin
   ControlaBotoes;
   HabilitaEdicao(false);
+  dsPadrao.DataSet.Close;
 end;
 
 procedure TfrmPadrao.HabilitaEdicao(status: boolean);
