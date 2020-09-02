@@ -46,6 +46,7 @@ type
     qryProdutoDESCRICAO: TIBStringField;
     qryProdutoSITUACAO: TIBStringField;
     procedure qryProdutoAfterPost(DataSet: TDataSet);
+    procedure qryPedidoAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -60,6 +61,12 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TdtmGlobal.qryPedidoAfterPost(DataSet: TDataSet);
+begin
+  qryPedido.ApplyUpdates;
+  transPedido.commit;
+end;
 
 procedure TdtmGlobal.qryProdutoAfterPost(DataSet: TDataSet);
 begin

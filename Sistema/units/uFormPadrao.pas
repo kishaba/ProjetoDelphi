@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
-  Data.DB, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, System.Actions, Vcl.ActnList;
+  Data.DB, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, System.Actions, Vcl.ActnList,IBX.IBQuery;
 
 type
   TfrmPadrao = class(TForm)
@@ -34,6 +34,7 @@ type
     procedure actExcluirExecute(Sender: TObject);
     procedure actSalvarExecute(Sender: TObject);
     procedure actCancelarExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
     procedure ControlaBotoes;
@@ -93,6 +94,7 @@ begin
   dsPadrao.DataSet.post;
   ControlaBotoes;
   HabilitaEdicao(false);
+  dsPadrao.DataSet.Open;
 end;
 
 
@@ -108,6 +110,13 @@ begin
   lblF5.Visible   := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   BtnCancela.Visible := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
   lblF6.Visible := (dsPadrao.DataSet.State in [dsInsert,dsEdit]);
+end;
+
+procedure TfrmPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  if Assigned((dsPadrao.DataSet as TIBQuery)) then
+    (dsPadrao.DataSet as TIBQuery).Close;
+
 end;
 
 procedure TfrmPadrao.FormShow(Sender: TObject);

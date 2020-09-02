@@ -12,13 +12,13 @@ uses
 type
   TfrmCadProduto = class(TfrmPadrao)
     grdConsulta: TDBGrid;
-    edtlocalizar: TEdit;
-    Label4: TLabel;
     GroupBox1: TGroupBox;
     Label1: TLabel;
     edtCodigo: TDBEdit;
     Label2: TLabel;
     edtDescricao: TDBEdit;
+    Label3: TLabel;
+    edtlocalizar: TEdit;
     procedure edtLocalizarKeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure grdConsultaKeyPress(Sender: TObject; var Key: Char);
@@ -69,9 +69,9 @@ procedure TfrmCadProduto.actSalvarExecute(Sender: TObject);
 begin
   inherited;
   grdConsulta.Enabled := true;
-  dtmGlobal.transProduto.commit;
+  {dtmGlobal.transProduto.commit;
   dtmGlobal.transProduto.Active := false;
-  dtmGlobal.transProduto.Active := true;
+  dtmGlobal.transProduto.Active := true;}
 end;
 
 
@@ -89,7 +89,6 @@ end;
 procedure TfrmCadProduto.edtLocalizarKeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  dsPadrao.DataSet.Open;
   if key = VK_RETURN then
   begin
     grdConsulta.SetFocus;
@@ -105,6 +104,7 @@ end;
 procedure TfrmCadProduto.FormShow(Sender: TObject);
 begin
   inherited;
+  dsPadrao.DataSet.Open;
   edtlocalizar.SetFocus;
 end;
 

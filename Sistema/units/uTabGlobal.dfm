@@ -28,9 +28,9 @@ object dtmGlobal: TdtmGlobal
       '  CODPRODUTO = :OLD_CODPRODUTO')
     InsertSQL.Strings = (
       'insert into produto'
-      '  (CODPRODUTO, DESCRICAO, SITUACAO)'
+      '  (CODPRODUTO, DESCRICAO)'
       'values'
-      '  (:CODPRODUTO, :DESCRICAO, :SITUACAO)')
+      '  (:CODPRODUTO, :DESCRICAO)')
     DeleteSQL.Strings = (
       'delete from produto'
       'where'
@@ -47,8 +47,11 @@ object dtmGlobal: TdtmGlobal
   object qryPedido: TIBQuery
     Database = Conexao
     Transaction = transPedido
+    ForcedRefresh = True
+    AfterPost = qryPedidoAfterPost
+    Active = True
     BufferChunks = 1000
-    CachedUpdates = False
+    CachedUpdates = True
     ParamCheck = True
     SQL.Strings = (
       'select * from PEDIDO')
@@ -105,6 +108,7 @@ object dtmGlobal: TdtmGlobal
     end
   end
   object transPedido: TIBTransaction
+    Active = True
     DefaultDatabase = Conexao
     Left = 96
     Top = 176
@@ -156,6 +160,8 @@ object dtmGlobal: TdtmGlobal
   object qryItemPedido: TIBQuery
     Database = Conexao
     Transaction = transItemPedido
+    ForcedRefresh = True
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -218,6 +224,7 @@ object dtmGlobal: TdtmGlobal
     end
   end
   object transItemPedido: TIBTransaction
+    Active = True
     DefaultDatabase = Conexao
     Left = 248
     Top = 176
@@ -328,7 +335,7 @@ object dtmGlobal: TdtmGlobal
   end
   object transConsultaPedido: TIBTransaction
     DefaultDatabase = Conexao
-    Left = 184
+    Left = 208
     Top = 312
   end
   object qryProduto: TIBQuery
@@ -341,19 +348,24 @@ object dtmGlobal: TdtmGlobal
     CachedUpdates = True
     ParamCheck = True
     SQL.Strings = (
-      'select * from produto')
+      'select * from produto'
+      'ORDER BY CODPRODUTO DESC')
     UpdateObject = upProduto
     GeneratorField.Field = 'CODPRODUTO'
     GeneratorField.Generator = 'GEN_CODPEDIDO'
+    GeneratorField.ApplyEvent = gamOnPost
     Left = 32
     Top = 64
     object qryProdutoCODPRODUTO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'CODPRODUTO'
       Origin = 'PRODUTO.CODPRODUTO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object qryProdutoDESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      DisplayWidth = 60
       FieldName = 'DESCRICAO'
       Origin = 'PRODUTO.DESCRICAO'
       Required = True

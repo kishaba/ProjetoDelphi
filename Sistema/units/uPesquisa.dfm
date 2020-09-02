@@ -135,13 +135,13 @@ object frmPesquisa: TfrmPesquisa
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 589
   end
   object DBGrid1: TDBGrid
     Left = 8
     Top = 119
     Width = 617
     Height = 268
+    Cursor = crHandPoint
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = dtsPesquisa
     TabOrder = 1
